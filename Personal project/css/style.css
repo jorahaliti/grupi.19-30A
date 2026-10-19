@@ -497,46 +497,49 @@ footer p {
 
 /* HOT COFFEE PAGE*/
 
-.products {
-    background-color: #f5eee6;
-    padding: 60px 8%;
-    min-height: 100vh;
-    text-align: center;
-}
-
-.products h2 {
-    font-size: 38px;
-    color: #3e2723;
-    margin-bottom: 40px;
-}
-
 .product-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 35px;
-    flex-wrap: wrap;
-    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
     margin: 0 auto;
+    align-items: start;
 }
 
 .product {
+    width: 100%;
+    box-sizing: border-box;
     background-color: #fffaf5;
-    width: 300px;
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 20px;
     box-shadow: 0 5px 15px rgba(62, 39, 35, 0.12);
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.product:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(62, 39, 35, 0.2);
+.product img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
+
+@media (max-width: 900px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .product-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* CONTACT US */
 
-.contact-hero {
+.contact-main {
     min-height: 350px;
     background:
         linear-gradient(
@@ -556,12 +559,12 @@ footer p {
     color: #f5eee6;
 }
 
-.contact-hero h1 {
+.contact-main h1 {
     font-size: 48px;
     margin-bottom: 20px;
 }
 
-.contact-hero p {
+.contact-main p {
     max-width: 600px;
     font-size: 17px;
     line-height: 1.8;
@@ -729,20 +732,17 @@ footer p {
     color: #ffffff;
 }
 
-
-/* RESPONSIVE DESIGN */
-
 @media (max-width: 768px) {
 
-    .contact-hero {
+    .contact-main {
         min-height: 300px;
     }
 
-    .contact-hero h1 {
+    .contact-main h1 {
         font-size: 36px;
     }
 
-    .contact-hero p {
+    .contact-main p {
         font-size: 15px;
     }
 
@@ -774,6 +774,143 @@ footer p {
         padding: 25px 15px;
     }
 }
+
+/* ICED COFFEE PAGE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5eee6;
+    color: #3e2723;
+}
+
+.products {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 36px;
+    color: #3e2723;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.products h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #d7a86e;
+    margin: 12px auto 0;
+    border-radius: 5px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product {
+    background-color: #fffaf5;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(62, 39, 35, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(62, 39, 35, 0.2);
+}
+
+.coffee-icon {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.coffee-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.product:hover .coffee-icon img {
+    transform: scale(1.08);
+}
+
+.product h3 {
+    font-size: 21px;
+    color: #3e2723;
+    margin-bottom: 12px;
+}
+
+.product p {
+    font-size: 14px;
+    color: #795548;
+    line-height: 1.6;
+    min-height: 45px;
+    margin-bottom: 15px;
+}
+
+.price {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #a66a36;
+    margin-bottom: 18px;
+}
+
+.product button {
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.product button:hover {
+    background-color: #d7a86e;
+    color: #3e2723;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .products {
+        padding: 40px 5%;
+    }
+
+    .products h2 {
+        font-size: 28px;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .coffee-icon {
+        height: 240px;
+    }
+}
+
 
 
 
